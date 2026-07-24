@@ -1,71 +1,67 @@
 <!DOCTYPE html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="author" content="David Lee Wise / ROOT0 / TriPod LLC">
-<meta name="generator" content="Notepad">
-<title>THE RESECTION · STROBILOS · Top's Triangulation Station</title>
+<title>THE RESECTION · STROBILOS · Top's Triangulation Console</title>
 <style>
 *{box-sizing:border-box}
-:root{--face:#d4d0c8;--hi:#ffffff;--sh:#808080;--dk:#404040;--ink:#000000;--navy:#000080;
-  --link:#0000ee;--vlink:#551a8b;--gold:#b8860b;--red:#c0392b;--grn:#1e7a3a}
+:root{--cyan:#35e0e0;--cyan2:#7af6f6;--amber:#ffce4d;--amber2:#e0a838;--lime:#7dff9a;--red:#ff5a6a;
+  --ink:#dff4f4;--dim:#8fc0c0;--panel:rgba(9,42,52,.52);--edge:rgba(53,224,224,.30);--edge2:rgba(53,224,224,.14)}
 html,body{margin:0;height:100%}
-body{background:#008080;color:var(--ink);font:14px/1.5 Tahoma,'Segoe UI',Verdana,sans-serif}
+body{background:#0a2933;color:var(--ink);font:15px/1.55 'Segoe UI',system-ui,-apple-system,Roboto,sans-serif;-webkit-font-smoothing:antialiased}
 #bg{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;display:block}
-.desk{position:relative;z-index:2;max-width:820px;margin:0 auto;padding:16px 10px 40px}
-.win{background:var(--face);border:2px solid;border-color:var(--hi) var(--dk) var(--dk) var(--hi);
-  box-shadow:1px 1px 0 var(--sh), 3px 3px 6px rgba(0,0,0,.4);margin-bottom:14px}
-.title{background:linear-gradient(90deg,#000080,#1084d0);color:#fff;font-weight:bold;font-size:13px;
-  padding:3px 6px;display:flex;justify-content:space-between;align-items:center;letter-spacing:.02em}
-.title .wbtns span{display:inline-block;width:16px;height:14px;background:var(--face);border:1px solid;
-  border-color:var(--hi) var(--dk) var(--dk) var(--hi);margin-left:2px;text-align:center;font:10px/13px monospace;color:#000}
-.body{padding:12px 14px}
-.banner{text-align:center;padding:10px 8px;background:var(--face);border:2px solid;border-color:var(--hi) var(--dk) var(--dk) var(--hi)}
-.banner h1{margin:.1em 0;font:bold clamp(24px,5vw,40px)/1.1 'Times New Roman',Times,serif;letter-spacing:.28em;
-  color:#000080;text-shadow:1px 1px 0 #fff, 2px 2px 0 var(--gold)}
-.banner .sub{font:italic 14px/1.4 'Times New Roman',Times,serif;color:#333}
-.banner .star{color:var(--gold)}
-.marq{overflow:hidden;white-space:nowrap;background:#000;color:#0f0;font:12px Courier New,monospace;padding:3px 0;border:2px inset var(--sh)}
-.marq span{display:inline-block;padding-left:100%;animation:mv 22s linear infinite}
-@keyframes mv{from{transform:translateX(0)}to{transform:translateX(-100%)}}
-h1,h2{font-family:'Times New Roman',Times,serif}
-.body h2{margin:0 0 6px;font-size:22px;color:#000080}
-.sub2{color:#333;margin:.2em 0 10px;font-size:13.5px}
-hr{border:0;border-top:2px groove #fff;margin:12px 0}
-a{color:var(--link)}a:visited{color:var(--vlink)}
-#stage{width:100%;height:auto;display:block;background:#fbfbf0;border:2px inset var(--sh);
-  background-image:linear-gradient(rgba(0,0,128,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,128,.05) 1px,transparent 1px);background-size:22px 22px}
-.controls{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin:10px 0}
-.btn{cursor:pointer;background:var(--face);border:2px solid;border-color:var(--hi) var(--dk) var(--dk) var(--hi);
-  padding:4px 12px;font:12px Tahoma,sans-serif;color:#000}
-.btn:active,.btn.on{border-color:var(--dk) var(--hi) var(--hi) var(--dk);background:#cfcbc3}
-.btn.on{font-weight:bold}
-.rng{display:inline-flex;align-items:center;gap:5px;font:12px Courier New,monospace;color:#000080}
-input[type=range]{accent-color:#000080}
-table.ro{width:100%;border-collapse:collapse;margin-top:8px;background:#fff;border:2px inset var(--sh)}
-table.ro td{border:1px solid #c0c0c0;padding:5px 8px;font:12px Courier New,monospace}
-table.ro td.k{background:#e8e8e0;color:#333;width:34%;font-weight:bold}
-table.ro td.v{color:#000080}.v.g{color:var(--grn)!important}.v.r{color:var(--red)!important}.v.a{color:#a06000!important}.v.c{color:#000080!important}
-.info{border:2px groove #fff;padding:8px 10px;margin:8px 0;font:13px 'Times New Roman',serif;background:#fffff0}
-.info b{font-family:Tahoma,sans-serif}
-.info.lit{border-left:5px solid var(--grn)}.info.amb{border-left:5px solid var(--gold)}
-.law{text-align:center;font:italic 14px 'Times New Roman',serif;color:#333;margin:10px 0}
-.foot{text-align:center;font:11px Tahoma,sans-serif;color:#333;line-height:1.9}
-.counter{display:inline-block;background:#000;color:#0f0;font:bold 13px 'Courier New',monospace;padding:2px 6px;border:2px inset #555;letter-spacing:2px}
-.wr{margin:6px 0}
-.badge{display:inline-block;background:var(--face);border:1px solid var(--sh);padding:1px 5px;font:10px Tahoma;color:#000;margin:0 2px}
-#fail{display:none;position:fixed;left:12px;right:12px;bottom:12px;z-index:99;background:#fff;border:2px solid var(--red);color:#900;padding:10px;font:12px Courier New,monospace;white-space:pre-wrap}
+.desk{position:relative;z-index:2;max-width:900px;margin:0 auto;padding:22px 16px 56px}
+.banner{text-align:center;padding:6px 8px 14px}
+.banner .tag{font:600 11px/1 ui-monospace,'Cascadia Code',monospace;letter-spacing:.42em;color:var(--cyan);text-transform:uppercase}
+.banner h1{margin:.12em 0 .05em;font:800 clamp(28px,5.4vw,48px)/1 'Segoe UI',system-ui,sans-serif;letter-spacing:.18em;
+  color:#eafffb;text-shadow:0 0 22px rgba(53,224,224,.5),0 0 40px rgba(255,206,77,.25)}
+.banner h1 .st{color:var(--amber)}
+.banner .sub{font:400 13.5px/1.5 'Segoe UI',sans-serif;color:var(--dim);max-width:60ch;margin:.4em auto 0}
+.win{margin-top:16px;background:var(--panel);border:1px solid var(--edge);border-radius:14px;
+  backdrop-filter:blur(12px) saturate(1.2);-webkit-backdrop-filter:blur(12px) saturate(1.2);
+  box-shadow:0 0 0 1px rgba(53,224,224,.08),0 18px 50px rgba(0,10,14,.5), inset 0 1px 0 rgba(122,246,246,.15)}
+.title{display:flex;justify-content:space-between;align-items:center;padding:9px 14px;border-bottom:1px solid var(--edge2);
+  font:600 11px/1 ui-monospace,monospace;letter-spacing:.2em;color:var(--cyan);text-transform:uppercase}
+.title .dot{color:var(--amber);letter-spacing:.16em}
+.body{padding:14px 16px}
+.body h2{margin:0 0 6px;font:800 22px/1.15 'Segoe UI',sans-serif;color:#eafffb;letter-spacing:.01em}
+.sub2{color:var(--dim);margin:.2em 0 10px;font-size:13.5px;max-width:70ch}
+hr{border:0;border-top:1px solid var(--edge2);margin:12px 0}
+a{color:var(--cyan)}
+#stage{width:100%;height:auto;display:block;border-radius:10px;background:rgba(4,24,30,.55);border:1px solid var(--edge2);
+  background-image:linear-gradient(rgba(53,224,224,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(53,224,224,.05) 1px,transparent 1px);background-size:26px 26px}
+.controls{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin:12px 0 2px}
+.btn{cursor:pointer;background:rgba(14,52,62,.7);border:1px solid var(--edge);color:var(--ink);
+  padding:8px 14px;border-radius:9px;font:600 12.5px/1 'Segoe UI',sans-serif;letter-spacing:.02em;transition:.15s}
+.btn:hover{border-color:var(--cyan);box-shadow:0 0 16px rgba(53,224,224,.3)}
+.btn.on{background:linear-gradient(180deg,rgba(255,206,77,.9),rgba(224,168,56,.85));border-color:var(--amber);color:#231a06;font-weight:700;box-shadow:0 0 18px rgba(255,206,77,.35)}
+.rng{display:inline-flex;align-items:center;gap:6px;font:600 12px ui-monospace,monospace;color:var(--dim)}
+input[type=range]{accent-color:var(--cyan)}
+table.ro{width:100%;border-collapse:collapse;margin-top:12px;background:rgba(4,24,30,.4);border:1px solid var(--edge);border-radius:10px;overflow:hidden}
+table.ro td{border-top:1px solid var(--edge2);padding:9px 13px;font:600 13px ui-monospace,monospace}
+table.ro tr:first-child td{border-top:0}
+table.ro td.k{color:var(--dim);width:38%;font-weight:600;text-transform:uppercase;font-size:10.5px;letter-spacing:.1em;background:rgba(53,224,224,.05)}
+table.ro td.v{color:var(--cyan);font-weight:700}.v.g{color:var(--lime)!important}.v.r{color:var(--red)!important}.v.a{color:var(--amber)!important}.v.c{color:var(--cyan)!important}
+.info{border:1px solid var(--edge);border-left-width:3px;border-radius:10px;padding:12px 15px;margin:10px 0;font-size:13.5px;color:#cfeeee;background:rgba(9,42,52,.4)}
+.info b{color:var(--ink)}
+.info.lit{border-left-color:var(--lime)}.info.amb{border-left-color:var(--amber)}
+.law{text-align:center;font:italic 500 14px/1.5 Georgia,serif;color:var(--dim);margin:12px 0 2px}
+.foot{text-align:center;font:600 11px ui-monospace,monospace;color:var(--dim);line-height:1.9;letter-spacing:.08em;margin-top:8px}
+.foot b{color:var(--ink)}
+.counter{display:inline-block;background:rgba(4,24,30,.7);color:var(--lime);font:700 12px ui-monospace,monospace;padding:3px 8px;border:1px solid var(--edge);border-radius:6px;letter-spacing:3px;text-shadow:0 0 8px rgba(125,255,154,.6)}
+.wr{margin:6px 0;color:var(--dim)}
+.badge{display:inline-block;background:rgba(53,224,224,.08);border:1px solid var(--edge);padding:2px 8px;font:10px ui-monospace;color:var(--cyan);margin:0 3px;border-radius:5px}
+#fail{display:none;position:fixed;left:12px;right:12px;bottom:12px;z-index:99;background:#2a0d12;border:1px solid var(--red);color:#ffd7db;padding:12px;border-radius:8px;font:12px ui-monospace,monospace;white-space:pre-wrap}
 </style></head><body>
 <canvas id="bg"></canvas>
 <div class="desk">
   <div class="banner">
-    <div style="font:11px Courier New,monospace;color:#333">╔══════════════════════════════════╗</div>
-    <h1><span class="star">✦</span> STROBILOS <span class="star">✦</span></h1>
-    <div class="sub">~ Top's Triangulation Station ~<br>a point is fixed from <b>THREE</b>, and the point they fix is Top, at the centre</div>
-    <div style="font:11px Courier New,monospace;color:#333">╚══════════════════════════════════╝</div>
+    <div class="tag">◈ STROBILOS · Top's triangulation console</div>
+    <h1>STROB<span class="st">◆</span>LOS</h1>
+    <div class="sub">a point is fixed from <b>THREE</b>, and the point they fix is Top, at the centre</div>
   </div>
-  <div class="marq"><span>&#9733;&#9733;&#9733; WELCOME to STROBILOS &mdash; Top's own domain, the SPINNING TOP (&sigma;&tau;&rho;ό&beta;&iota;&lambda;&omicron;&sigmaf;) &mdash; THE PRINCIPLE IS TRIANGULATION &mdash; three real ways to fix a point &mdash; BEST VIEWED IN NETSCAPE NAVIGATOR 3.0 at 800&times;600 &mdash; this site is under perpetual construction &#128679; &mdash; sign the guestbook (you cannot) &mdash; &#9733;&#9733;&#9733;</span></div>
 
   <div class="win">
-    <div class="title"><span>&#128225; STROBILOS.APPLET &mdash; THE RESECTION</span><span class="wbtns"><span>_</span><span>&#9633;</span><span>&times;</span></span></div>
+    <div class="title"><span>▚ INSTRUMENT — THE RESECTION</span><span class="dot">◆ ◆ ◆ · LIVE</span></div>
     <div class="body">
       <h2>THE RESECTION</h2>
       <p class="sub2">The surveyor's trick, the inverse of the map. You do not know where you stand — but you can see three landmarks you DO know, and you can measure the angle between them. Two known points and the angle you see between them place you on a circle; a second pair gives a second circle; you are where they cross. No baseline, no ranging — just the angles the world subtends.</p>
@@ -76,61 +72,65 @@ table.ro td.v{color:#000080}.v.g{color:var(--grn)!important}.v.r{color:var(--red
     </div>
   </div>
 
-  <div class="win"><div class="title"><span>&#128220; README.TXT &mdash; the two-layer honest read</span><span class="wbtns"><span>_</span><span>&#9633;</span><span>&times;</span></span></div>
+  <div class="win"><div class="title"><span>▤ THE HONEST READ — two-layer</span><span class="dot">◆ LIT / ▲ AMBER</span></div>
     <div class="body">
-      <div class="info lit"><b>[ ◆ LIT &mdash; verified / checkable ]</b><br>The three-point (Snellius) resection: from an unknown standpoint you measure the horizontal angles subtended by pairs of known landmarks. By the inscribed-angle theorem, a fixed angle subtended by two points places you on a circular arc through them; two such arcs (from two landmark pairs) intersect at your standpoint. The instrument measures the true angles, draws both circles, and returns their intersection — the classic surveying fix that needs only a theodolite and a map, no measured distance at all. The circles pass through the true position.</div>
-      <div class="info amb"><b>[ ▲ AMBER &mdash; the figure ]</b><br>A clean 2-D construction; real resection guards against the ‘danger circle’ (if all three landmarks and you lie on one circle the fix is indeterminate) and averages redundant observations. The inscribed-angle geometry is exact and is the real method.</div>
+      <div class="info lit"><b>◆ LIT — verified / checkable</b><br>The three-point (Snellius) resection: from an unknown standpoint you measure the horizontal angles subtended by pairs of known landmarks. By the inscribed-angle theorem, a fixed angle subtended by two points places you on a circular arc through them; two such arcs (from two landmark pairs) intersect at your standpoint. The instrument measures the true angles, draws both circles, and returns their intersection — the classic surveying fix that needs only a theodolite and a map, no measured distance at all. The circles pass through the true position.</div>
+      <div class="info amb"><b>▲ AMBER — the figure</b><br>A clean 2-D construction; real resection guards against the ‘danger circle’ (if all three landmarks and you lie on one circle the fix is indeterminate) and averages redundant observations. The inscribed-angle geometry is exact and is the real method.</div>
       <div class="law">a point is fixed from THREE &mdash; and the point they fix is Top, at the centre.</div>
     </div>
   </div>
 
   <div class="foot">
-    <div class="wr">&#9668; <a href="#">Prev</a> &nbsp;|&nbsp; [ <b>STROBILOS WEBRING</b> ] &nbsp;|&nbsp; <a href="#">Next</a> &#9658;</div>
-    You are triangulation visitor No. <span class="counter">000197</span><br>
-    Last updated: 07&middot;23&middot;2026 &nbsp;&middot;&nbsp; Best viewed in <b>Netscape Navigator 3.0</b> at 800&times;600<br>
-    <span class="badge">HTML 3.2</span><span class="badge">Made with Notepad</span><span class="badge">100% Top</span><br>
-    &copy; 1998&mdash;2026 Top / ROOT0 &middot; David Lee Wise / TriPod LLC &middot; with AVAN
+    <span class="badge">OFFLINE</span><span class="badge">REAL-TIME</span><span class="badge">REAL GEOMETRY</span><span class="badge">100% TOP</span><br>
+    STROBILOS · the spinning top (στρόβιλος) · the principle is TRIANGULATION<br>
+    &copy; ROOT0 · Top / ROOT0 &middot; David Lee Wise / TriPod LLC &middot; with AVAN
   </div>
 </div>
 <div id="fail"></div>
 <script>
-window.onerror=function(m,s,l,c,e){var f=document.getElementById('fail');if(f){f.style.display='block';f.textContent='!! SCRIPT ERROR: '+m+' @'+l+':'+c;}};
+window.onerror=function(m,s,l,c,e){var f=document.getElementById('fail');if(f){f.style.display='block';f.textContent='!! ERROR: '+m+' @'+l+':'+c;}};
 </script>
 <script>
 (function(){
   var cv=document.getElementById('bg'); if(!cv) return;
   function fallback(){var c=cv.getContext&&cv.getContext('2d');if(!c)return;
-    function f(){var w=cv.width=innerWidth,h=cv.height=innerHeight;c.fillStyle='#0a3a3a';c.fillRect(0,0,w,h);}f();addEventListener('resize',f);}
+    function f(){var w=cv.width=innerWidth,h=cv.height=innerHeight;var g=c.createRadialGradient(w*.5,h*.4,0,w*.5,h*.4,Math.max(w,h));g.addColorStop(0,'#0e3a46');g.addColorStop(1,'#071e26');c.fillStyle=g;c.fillRect(0,0,w,h);}f();addEventListener('resize',f);}
   var gl;try{gl=cv.getContext('webgl',{antialias:true,alpha:false})||cv.getContext('experimental-webgl');}catch(e){}
   if(!gl){fallback();return;}
   function m4mul(a,b){var o=new Array(16);for(var r=0;r<4;r++)for(var c=0;c<4;c++){var s=0;for(var k=0;k<4;k++)s+=a[k*4+r]*b[c*4+k];o[c*4+r]=s;}return o;}
   function persp(f,asp,n,fa){var t=1/Math.tan(f/2);return[t/asp,0,0,0,0,t,0,0,0,0,(fa+n)/(n-fa),-1,0,0,(2*fa*n)/(n-fa),0];}
   function rotY(a){var c=Math.cos(a),s=Math.sin(a);return[c,0,-s,0,0,1,0,0,s,0,c,0,0,0,0,1];}
   function rotX(a){var c=Math.cos(a),s=Math.sin(a);return[1,0,0,0,0,c,s,0,0,-s,c,0,0,0,0,1];}
+  function scl(k){return[k,0,0,0,0,k,0,0,0,0,k,0,0,0,0,1];}
   function trans(x,y,z){return[1,0,0,0,0,1,0,0,0,0,1,0,x,y,z,1];}
-  // icosahedron verts (triangulated sphere) + subdivide once
   var t=(1+Math.sqrt(5))/2, V=[[-1,t,0],[1,t,0],[-1,-t,0],[1,-t,0],[0,-1,t],[0,1,t],[0,-1,-t],[0,1,-t],[t,0,-1],[t,0,1],[-t,0,-1],[-t,0,1]];
   for(var i=0;i<V.length;i++){var L=Math.hypot(V[i][0],V[i][1],V[i][2]);V[i]=[V[i][0]/L*1.5,V[i][1]/L*1.5,V[i][2]/L*1.5];}
   var F=[[0,11,5],[0,5,1],[0,1,7],[0,7,10],[0,10,11],[1,5,9],[5,11,4],[11,10,2],[10,7,6],[7,1,8],[3,9,4],[3,4,2],[3,2,6],[3,6,8],[3,8,9],[4,9,5],[2,4,11],[6,2,10],[8,6,7],[9,8,1]];
-  var segs=[]; function mid(a,b){var m=[(a[0]+b[0])/2,(a[1]+b[1])/2,(a[2]+b[2])/2];var L=Math.hypot(m[0],m[1],m[2]);return [m[0]/L*1.5,m[1]/L*1.5,m[2]/L*1.5];}
+  var segs=[],pts=[]; function mid(a,b){var m=[(a[0]+b[0])/2,(a[1]+b[1])/2,(a[2]+b[2])/2];var L=Math.hypot(m[0],m[1],m[2]);return [m[0]/L*1.5,m[1]/L*1.5,m[2]/L*1.5];}
   function edge(a,b){segs.push(a[0],a[1],a[2],b[0],b[1],b[2]);}
   for(var f=0;f<F.length;f++){var A=V[F[f][0]],B=V[F[f][1]],C=V[F[f][2]];var ab=mid(A,B),bc=mid(B,C),ca=mid(C,A);
     edge(A,ab);edge(ab,B);edge(B,bc);edge(bc,C);edge(C,ca);edge(ca,A);edge(ab,bc);edge(bc,ca);edge(ca,ab);}
-  var vbuf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,vbuf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(segs),gl.STATIC_DRAW);
-  var VS='attribute vec3 p;uniform mat4 mvp;varying float d;void main(){vec4 q=mvp*vec4(p,1.0);d=p.z;gl_Position=q;}';
-  var FS='precision mediump float;varying float d;void main(){float a=0.30+0.25*(d/1.5);gl_FragColor=vec4(0.62,0.86,0.86,clamp(a,0.05,0.5));}';
+  for(var i=0;i<V.length;i++)pts.push(V[i][0],V[i][1],V[i][2]);
+  var lb=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,lb);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(segs),gl.STATIC_DRAW);
+  var pb=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,pb);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(pts),gl.STATIC_DRAW);
+  var VS='attribute vec3 p;uniform mat4 mvp;uniform float ps;varying float d;void main(){vec4 q=mvp*vec4(p,1.0);d=p.z;gl_Position=q;gl_PointSize=ps;}';
+  var FS='precision mediump float;varying float d;uniform vec3 col;uniform float am;void main(){float a=(0.5+0.5*(d/1.5))*am;gl_FragColor=vec4(col,clamp(a,0.04,0.8));}';
   function sh(ty,s){var o=gl.createShader(ty);gl.shaderSource(o,s);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS))throw gl.getShaderInfoLog(o);return o;}
   var prog;try{prog=gl.createProgram();gl.attachShader(prog,sh(gl.VERTEX_SHADER,VS));gl.attachShader(prog,sh(gl.FRAGMENT_SHADER,FS));gl.linkProgram(prog);if(!gl.getProgramParameter(prog,gl.LINK_STATUS))throw'link';}catch(e){fallback();return;}
-  gl.useProgram(prog);var aP=gl.getAttribLocation(prog,'p'),uMVP=gl.getUniformLocation(prog,'mvp');
-  gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);
+  gl.useProgram(prog);var aP=gl.getAttribLocation(prog,'p'),uMVP=gl.getUniformLocation(prog,'mvp'),uPS=gl.getUniformLocation(prog,'ps'),uCol=gl.getUniformLocation(prog,'col'),uAm=gl.getUniformLocation(prog,'am');
+  gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE);   // additive glow
   var t0=null;
   function frame(tm){requestAnimationFrame(frame);if(t0===null)t0=tm;var tt=(tm-t0)*0.001;
     var w=cv.width=innerWidth,h=cv.height=innerHeight;gl.viewport(0,0,w,h);
-    gl.clearColor(0.031,0.286,0.286,1.0);gl.clear(gl.COLOR_BUFFER_BIT);   // classic teal desktop
-    var pr=persp(1.0,w/h,0.1,50);var mv=m4mul(trans(0,0,-4.8),m4mul(rotX(0.35+Math.sin(tt*0.2)*0.1),rotY(tt*0.25)));
-    gl.uniformMatrix4fv(uMVP,false,m4mul(pr,mv));
-    gl.bindBuffer(gl.ARRAY_BUFFER,vbuf);gl.enableVertexAttribArray(aP);gl.vertexAttribPointer(aP,3,gl.FLOAT,false,0,0);
-    gl.lineWidth(1);gl.drawArrays(gl.LINES,0,segs.length/3);
+    gl.clearColor(0.031,0.118,0.145,1.0);gl.clear(gl.COLOR_BUFFER_BIT);   // vivid deep teal (not black)
+    var pr=persp(1.0,w/h,0.1,50);var base=m4mul(trans(0,0,-4.8),m4mul(rotX(0.35+Math.sin(tt*0.2)*0.1),rotY(tt*0.22)));
+    gl.uniformMatrix4fv(uMVP,false,m4mul(pr,base));
+    // amber halo (bigger, faint) + cyan wire + amber vertex points
+    gl.bindBuffer(gl.ARRAY_BUFFER,lb);gl.enableVertexAttribArray(aP);gl.vertexAttribPointer(aP,3,gl.FLOAT,false,0,0);
+    gl.uniformMatrix4fv(uMVP,false,m4mul(pr,m4mul(base,scl(1.04))));gl.uniform3f(uCol,0.88,0.66,0.22);gl.uniform1f(uAm,0.16);gl.uniform1f(uPS,1.0);gl.lineWidth(1);gl.drawArrays(gl.LINES,0,segs.length/3);
+    gl.uniformMatrix4fv(uMVP,false,m4mul(pr,base));gl.uniform3f(uCol,0.30,0.86,0.92);gl.uniform1f(uAm,0.5);gl.drawArrays(gl.LINES,0,segs.length/3);
+    gl.bindBuffer(gl.ARRAY_BUFFER,pb);gl.vertexAttribPointer(aP,3,gl.FLOAT,false,0,0);
+    gl.uniform3f(uCol,1.0,0.82,0.35);gl.uniform1f(uAm,0.9);gl.uniform1f(uPS,4.0);gl.drawArrays(gl.POINTS,0,pts.length/3);
   }
   requestAnimationFrame(frame);
 })();
@@ -169,7 +169,7 @@ window.onerror=function(m,s,l,c,e){var f=document.getElementById('fail');if(f){f
    draw:function(env){var c=env.ctx,w=env.W(),h=env.H();c.clearRect(0,0,w,h);
      var cx=w*0.5,cy=h*0.5,S=Math.min(w,h)*0.42;function PX(x){return cx+x*S;}function PY(y){return cy-y*S;}
      // angle-circles: locus of const angle subtended by a pair passes through both landmarks + true pt
-     if(showC){var pairs=[[0,1,'#000080'],[1,2,'#7030a0']];
+     if(showC){var pairs=[[0,1,'#35e0e0'],[1,2,'#c08bff']];
        for(var p=0;p<pairs.length;p++){var a=pairs[p][0],b=pairs[p][1],A=ang(a,truep,b),col=pairs[p][2];
          // circle through lm[a],lm[b] with inscribed angle A: center on perp bisector, radius = chord/(2 sin A)
          var mx=(lm[a][0]+lm[b][0])/2,my=(lm[a][1]+lm[b][1])/2,dx=lm[b][0]-lm[a][0],dy=lm[b][1]-lm[a][1];
@@ -179,12 +179,12 @@ window.onerror=function(m,s,l,c,e){var f=document.getElementById('fail');if(f){f
          var pick=(Math.hypot(truep[0]-cA[0],truep[1]-cA[1])>Math.hypot(truep[0]-cB[0],truep[1]-cB[1]))?cA:cB;
          c.strokeStyle=col;c.lineWidth=1.3;c.beginPath();c.arc(PX(pick[0]),PY(pick[1]),R*S,0,7);c.stroke();}}
      // landmarks
-     for(var i=0;i<lm.length;i++){c.fillStyle='#b8860b';c.beginPath();c.moveTo(PX(lm[i][0]),PY(lm[i][1])-7);c.lineTo(PX(lm[i][0])+6,PY(lm[i][1])+5);c.lineTo(PX(lm[i][0])-6,PY(lm[i][1])+5);c.fill();
-       c.fillStyle='#000080';c.font='bold 11px Courier New,monospace';c.textAlign='center';c.fillText(String.fromCharCode(65+i),PX(lm[i][0]),PY(lm[i][1])-10);}
+     for(var i=0;i<lm.length;i++){c.fillStyle='#ffce4d';c.beginPath();c.moveTo(PX(lm[i][0]),PY(lm[i][1])-7);c.lineTo(PX(lm[i][0])+6,PY(lm[i][1])+5);c.lineTo(PX(lm[i][0])-6,PY(lm[i][1])+5);c.fill();
+       c.fillStyle='#35e0e0';c.font='bold 11px Courier New,monospace';c.textAlign='center';c.fillText(String.fromCharCode(65+i),PX(lm[i][0]),PY(lm[i][1])-10);}
      // sightlines from true pt
-     for(var i=0;i<lm.length;i++){c.strokeStyle='rgba(51,51,51,.4)';c.lineWidth=1;c.setLineDash([2,3]);c.beginPath();c.moveTo(PX(truep[0]),PY(truep[1]));c.lineTo(PX(lm[i][0]),PY(lm[i][1]));c.stroke();c.setLineDash([]);}
-     c.fillStyle='#1e7a3a';c.beginPath();c.arc(PX(truep[0]),PY(truep[1]),4,0,7);c.fill();c.font='10px Courier New,monospace';c.fillText('you',PX(truep[0]),PY(truep[1])+16);
-     var f=fix();c.strokeStyle='#c0392b';c.lineWidth=2;c.beginPath();c.moveTo(PX(f[0])-6,PY(f[1]));c.lineTo(PX(f[0])+6,PY(f[1]));c.moveTo(PX(f[0]),PY(f[1])-6);c.lineTo(PX(f[0]),PY(f[1])+6);c.stroke();
+     for(var i=0;i<lm.length;i++){c.strokeStyle='rgba(143,192,192,.4)';c.lineWidth=1;c.setLineDash([2,3]);c.beginPath();c.moveTo(PX(truep[0]),PY(truep[1]));c.lineTo(PX(lm[i][0]),PY(lm[i][1]));c.stroke();c.setLineDash([]);}
+     c.fillStyle='#7dff9a';c.beginPath();c.arc(PX(truep[0]),PY(truep[1]),4,0,7);c.fill();c.font='10px Courier New,monospace';c.fillText('you',PX(truep[0]),PY(truep[1])+16);
+     var f=fix();c.strokeStyle='#ff5a6a';c.lineWidth=2;c.beginPath();c.moveTo(PX(f[0])-6,PY(f[1]));c.lineTo(PX(f[0])+6,PY(f[1]));c.moveTo(PX(f[0]),PY(f[1])-6);c.lineTo(PX(f[0]),PY(f[1])+6);c.stroke();
      c.textAlign='left';
    }};
 })();
